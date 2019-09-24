@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Unicode to Preeti</title>
+    <style>
+        body {font-family: Arial;}
+        textarea{
+            color: green;
+            font-size:20px; 
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        button{
+            cursor: pointer;
+        }
+        </style>
+    <script src="preeti.js"></script>
+
+    <script>
+        function copyPreeti(event) {
+            var copyText = document.getElementById("preeti");
+            doCopying(copyText,event);
+            
+        }
+        function doCopying(copyText,event){
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+
+            //debugger;
+            event.target.innerHTML="Copied &#10003;"
+            setTimeout(function(){
+                event.target.innerHTML="Copy";
+            },3000);
+        }
+    </script>
+</head>
+<body>
+<form>
+    <textarea name="unicode" id="unicode" cols="30" rows="9" placeholder="Write/Paste unicode text here..."
+        onkeyup="unicodeToPreeti()"></textarea>
+    <div></div>
+    <br>
+    <div align="left">
+        <input id="converter" title="Click Here" onclick="unicodeToPreeti();" value=" Convert To Preeti "
+            name="converter" type="button">
+        <button onclick="copyPreeti(event)" type="button" style="background: green;color: #fff">Copy</button>
+        <a href="https://www.toolsnepal.com/?ref=embed" target="blank" style="color: #999;font-size: 10px">&copy;
+            ToolsNepal</a>
+    </div>
+    <br>
+    <textarea name="preeti" id="preeti" cols="30" rows="9" placeholder="Copy Preeti text from here..."></textarea>
+</form>
